@@ -80,10 +80,10 @@
         </dependency>
 
         <!-- 工程模块；启动依赖 trigger->domain, infrastructure-->
-        <dependency>
-            <groupId>cn.cug</groupId>
-            <artifactId>todo-list-trigger</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.cug</groupId>-->
+<!--            <artifactId>todo-list-trigger</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>cn.cug</groupId>
             <artifactId>todo-list-infrastructure</artifactId>

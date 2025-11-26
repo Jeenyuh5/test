@@ -1,14 +1,18 @@
 package cn.cug.domain.basic.service.basic;
 
 import cn.cug.domain.basic.model.entity.todoItemEntity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class todoManagerService implements ITodoManager{
 
     private List<todoItemEntity> todoList;
+
 
 //    private final String JSON_FILE = "todo.json";
 

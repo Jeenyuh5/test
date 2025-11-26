@@ -8,10 +8,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>todo-list-api</module>
+<!--        <module>todo-list-api</module>-->
         <module>todo-list-app</module>
         <module>todo-list-domain</module>
-        <module>todo-list-trigger</module>
+<!--        <module>todo-list-trigger</module>-->
         <module>todo-list-infrastructure</module>
         <module>todo-list-types</module>
     </modules>
