@@ -1,6 +1,6 @@
 package cn.cug.domain.basic.service.basic;
 
-import cn.cug.domain.basic.model.entity.todoItemEntity;
+import cn.cug.domain.basic.model.entity.TodoItemEntity;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public interface ITodoManager {
      /*
      * 查看待办事项列表
      * */
-     List<todoItemEntity> getTodoList();
+     List<TodoItemEntity> getTodoList();
 
 
 }

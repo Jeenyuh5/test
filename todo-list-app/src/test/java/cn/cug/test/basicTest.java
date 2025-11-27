@@ -1,11 +1,10 @@
 package cn.cug.test;
 
-import cn.cug.domain.basic.model.entity.todoItemEntity;
-import cn.cug.domain.basic.service.basic.todoManagerService;
+import cn.cug.domain.basic.model.entity.TodoItemEntity;
+import cn.cug.domain.basic.service.basic.TodoManagerService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,16 +18,16 @@ import java.util.List;
 @SpringBootTest
 public class basicTest {
 
-    private todoManagerService todoManager;
+    private TodoManagerService todoManager;
 
 
     @Before
     public void setUp() throws NoSuchFieldException, IllegalAccessException {
         // 初始化待办管理器
-        todoManager = new todoManagerService();
+        todoManager = new TodoManagerService();
 
         // 通过反射初始化私有成员todoList（避免空指针）
-        Field todoListField = todoManagerService.class.getDeclaredField("todoList");
+        Field todoListField = TodoManagerService.class.getDeclaredField("todoList");
         todoListField.setAccessible(true);
         todoListField.set(todoManager, new java.util.ArrayList<>());
     }
@@ -38,7 +37,7 @@ public class basicTest {
     public void addTodo_shouldAddItemWithCorrectId() {
         // 测试添加第一个待办（id=1）
         todoManager.addTodo("测试标题1", "测试描述1");
-        List<todoItemEntity> list = todoManager.getTodoList();
+        List<TodoItemEntity> list = todoManager.getTodoList();
         assertEquals(1, list.size());
         assertEquals(1, list.get(0).getId());
         assertEquals("测试标题1", list.get(0).getTitle());
@@ -73,7 +72,7 @@ public class basicTest {
     public void markTodoStatus_shouldToggleCompleted() {
         // 添加待办（默认completed=false）
         todoManager.addTodo("状态测试", "状态描述");
-        todoItemEntity item = todoManager.getTodoList().get(0);
+        TodoItemEntity item = todoManager.getTodoList().get(0);
         assertFalse(item.isCompleted());
 
         // 标记存在的id，状态翻转
@@ -95,7 +94,7 @@ public class basicTest {
     public void getTodoList_shouldReturnCopy() {
         // 添加待办
         todoManager.addTodo("拷贝测试", "拷贝描述");
-        List<todoItemEntity> returnedList = todoManager.getTodoList();
+        List<TodoItemEntity> returnedList = todoManager.getTodoList();
 
         // 修改返回的列表，原列表应不受影响
         returnedList.clear();

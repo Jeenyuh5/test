@@ -1,17 +1,19 @@
 package cn.cug.domain.basic.service.basic;
 
-import cn.cug.domain.basic.model.entity.todoItemEntity;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import cn.cug.domain.basic.model.entity.TodoItemEntity;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
-public class todoManagerService implements ITodoManager{
+public class TodoManagerService implements ITodoManager{
+    @Resource
+    private List<TodoItemEntity> todoList;
 
-    private List<todoItemEntity> todoList;
+    private LocalDateTime createTime;
 
 
 //    private final String JSON_FILE = "todo.json";
@@ -26,10 +28,11 @@ public class todoManagerService implements ITodoManager{
         /*
         * 表中添加待办事务
         * */
-        todoList.add(todoItemEntity.builder()
+        todoList.add(TodoItemEntity.builder()
                 .id(newId)
                 .title(title)
                 .description(description)
+                .createTime(LocalDateTime.now())
                 .build());
     }
 
@@ -41,7 +44,7 @@ public class todoManagerService implements ITodoManager{
 
     @Override
     public boolean markTodoStatus(int id) {
-        for(todoItemEntity item : todoList){
+        for(TodoItemEntity item : todoList){
             if(item.getId() == id){
                 item.setCompleted(!item.isCompleted());
                 return true;
@@ -51,7 +54,7 @@ public class todoManagerService implements ITodoManager{
     }
 
     @Override
-    public List<todoItemEntity> getTodoList() {
-        return new ArrayList<>(todoList);
+    public List<TodoItemEntity> getTodoList() {
+        return todoList;
     }
 }

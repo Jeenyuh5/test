@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class todoItemEntity {
+public class TodoItemEntity {
     // 唯一标识
     private int id;
 
